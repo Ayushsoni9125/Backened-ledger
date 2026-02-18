@@ -47,6 +47,25 @@ async function sendRegisterEmail(userEmail, name) {
   await sendEmail(userEmail, subject, text, html);
 }
 
+
+async function sendTranscationEmail(userEmail, name, amount, toAccount) {
+  const subject = 'Transaction Alert from backened-ledger';
+  const text = `Hi ${name},\n\nYou have successfully transferred $${amount} to account ${toAccount}.\n\nBest regards,\nThe backened-ledger Team`;
+  const html = `<p>Hi ${name},</p><p>You have successfully transferred $${amount} to account ${toAccount}.</p><p>Best regards,<br>The backened-ledger Team</p>`;
+
+  await sendEmail(userEmail, subject, text, html);
+}
+
+async function sendTransactionFailureEmail(userEmail, name, amount, toAccount) {
+  const subject = 'Transaction Failure Alert from backened-ledger';
+  const text = `Hi ${name},\n\nWe regret to inform you that your transaction of $${amount} to account ${toAccount} has failed. Please check your account balance and try again.\n\nBest regards,\nThe backened-ledger Team`;
+  const html = `<p>Hi ${name},</p><p>We regret to inform you that your transaction of $${amount} to account ${toAccount} has failed. Please check your account balance and try again.</p><p>Best regards,<br>The backened-ledger Team</p>`;
+
+  await sendEmail(userEmail, subject, text, html);
+}
+
 module.exports = {
-  sendRegisterEmail
+  sendRegisterEmail,
+  sendTranscationEmail,
+  sendTransactionFailureEmail
 }
