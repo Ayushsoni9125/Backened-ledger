@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 
 function connectDB(){
@@ -11,5 +11,4 @@ function connectDB(){
     process.exit(1);
   })
 }
-
 module.exports = connectDB;
